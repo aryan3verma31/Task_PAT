@@ -1,0 +1,51 @@
+<!DOCTYPE html> 
+<html>
+<body style="text-align:center;">
+
+<h2>Stone Paper Scissor Game</h2>
+
+<button 
+    style="background-color: lightskyblue; color: white; 
+           padding: 15px 30px; margin: 10px; font-size: 18px;"
+    onclick="play('stone')">Stone</button>
+
+<button 
+    style="background-color: green; color: white; 
+           padding: 15px 30px; margin: 10px; font-size: 18px;"
+    onclick="play('paper')">Paper</button>
+
+<button 
+    style="background-color: lightpink; color: white; 
+           padding: 15px 30px; margin: 10px; font-size: 18px;"
+    onclick="play('scissor')">Scissor</button>
+
+<h3 id="result" style="text-align:center; margin-top:25px;">Choose One</h3>
+
+<script>
+function play(userChoice) {
+    const choices = ["stone", "paper", "scissor"];
+    const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+    let result = "";
+
+    if (userChoice === computerChoice) {
+        result = "It's a Draw!";
+    } else if (
+        (userChoice === "stone" && computerChoice === "scissor") ||
+        (userChoice === "paper" && computerChoice === "stone") ||
+        (userChoice === "scissor" && computerChoice === "paper")
+    ) {
+        result = "You Win!";
+    } else {
+        result = "You Lose!";
+    }
+
+    document.getElementById("result").innerHTML =
+        "You chose: " + userChoice +
+        "<br>Computer chose: " + computerChoice +
+        "<br><br><strong>" + result + "</strong>";
+}
+</script>
+
+</body>
+</html>
